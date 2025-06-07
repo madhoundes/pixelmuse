@@ -6,7 +6,7 @@
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.5.3-blue.svg)](https://www.typescriptlang.org/)
 [![Vite](https://img.shields.io/badge/Vite-5.4.2-purple.svg)](https://vitejs.dev/)
 
-**PixelMuse** is a powerful AI-powered image and video generation platform that leverages modern web technologies to provide an intuitive interface for creating stunning visual content. Built with React, TypeScript, and powered by Vite for lightning-fast development.
+**PixelMuse** is a powerful AI-powered image and video generation platform that leverages modern web technologies to provide an intuitive interface for creating stunning visual content. Built with React, TypeScript, and powered by Vite for lightning-fast development. This project was originally implemented from **Bolt.new**.
 
 ## 🚀 Features
 
@@ -255,4 +255,4 @@ If you have any questions or need help getting started:
 
 **Made with ❤️ by [Madhoundes](https://github.com/madhoundes)**
 
-*Built with React, TypeScript, and powered by AI* 
+*Built with React, TypeScript, and powered by AI*
