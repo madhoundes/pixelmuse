@@ -1,6 +1,13 @@
 import React from 'react';
 import { Icon } from '@iconify/react';
 import { Link } from 'react-router-dom';
+import { 
+  Navbar as HeroNavbar, 
+  NavbarBrand, 
+  NavbarContent, 
+  NavbarItem,
+  Button
+} from '@heroui/react';
 import { cn } from '../utils/cn';
 import UserDropdown from './profile/UserDropdown';
 import NotificationDropdown from './notifications/NotificationDropdown';
@@ -11,33 +18,44 @@ interface NavbarProps {
 
 const Navbar: React.FC<NavbarProps> = ({ onMenuClick }) => {
   return (
-    <header className="bg-[#151823] border-b border-gray-800 py-3 px-4 sticky top-0 z-20">
-      <div className="container mx-auto flex items-center justify-between">
-        <div className="flex items-center gap-4">
-          <button 
-            onClick={onMenuClick}
-            className="p-2 text-gray-400 hover:text-white rounded-lg hover:bg-gray-800 transition-colors lg:hidden"
+    <HeroNavbar 
+      maxWidth="full"
+      className="bg-content1 border-b border-divider"
+      height="70px"
+    >
+      <NavbarContent justify="start">
+        <NavbarItem className="lg:hidden">
+          <Button
+            isIconOnly
+            variant="light"
+            onPress={onMenuClick}
             aria-label="Toggle sidebar"
           >
             <Icon icon="solar:hamburger-menu-linear" className="w-6 h-6" />
-          </button>
+          </Button>
+        </NavbarItem>
+        <NavbarBrand>
           <Link to="/" className="flex items-center">
             <Icon 
               icon="solar:magic-stick-bold-duotone" 
-              className="text-blue-500 h-8 w-8 mr-2" 
+              className="text-primary h-8 w-8 mr-2" 
             />
-            <h1 className="text-xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
+            <h1 className="text-xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
               PixelMuse
             </h1>
           </Link>
-        </div>
-        
-        <div className="flex items-center space-x-4">
+        </NavbarBrand>
+      </NavbarContent>
+      
+      <NavbarContent justify="end">
+        <NavbarItem>
           <NotificationDropdown />
+        </NavbarItem>
+        <NavbarItem>
           <UserDropdown />
-        </div>
-      </div>
-    </header>
+        </NavbarItem>
+      </NavbarContent>
+    </HeroNavbar>
   );
 };
 

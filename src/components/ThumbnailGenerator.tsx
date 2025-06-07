@@ -1,5 +1,15 @@
 import React, { useState } from 'react';
 import { Icon } from '@iconify/react';
+import { 
+  Card, 
+  CardBody, 
+  CardHeader, 
+  Button, 
+  Textarea, 
+  ButtonGroup,
+  Spinner,
+  Divider
+} from '@heroui/react';
 import { cn } from '../utils/cn';
 import ImageUploader from './ImageUploader';
 import { useTypewriterSuggestions } from '../utils/typewriterSuggestions';
@@ -85,38 +95,37 @@ const ThumbnailGenerator: React.FC = () => {
 
   return (
     <div className="space-y-6">
-      <div className="bg-[#151823] rounded-2xl p-6 border border-gray-800/50">
-        <h2 className="text-xl font-bold mb-6 flex items-center gap-2">
-          <Icon icon="solar:magic-stick-bold-duotone" className="w-6 h-6 text-blue-500" />
-          Generate Thumbnail
-        </h2>
-
-        <div className="space-y-6">
+      <Card className="bg-content1 border border-divider">
+        <CardHeader className="flex items-center gap-2 pb-2">
+          <Icon icon="solar:magic-stick-bold-duotone" className="w-6 h-6 text-primary" />
+          <h2 className="text-xl font-bold text-foreground">Generate Thumbnail</h2>
+        </CardHeader>
+        <Divider />
+        <CardBody className="space-y-6">
           {/* Text Prompt */}
           <div>
-            <label className="block text-sm text-gray-400 mb-2">
+            <label className="block text-sm text-default-500 mb-2">
               Enter Your Thumbnail Prompt:
             </label>
             <div className="relative">
-              <textarea
+              <Textarea
                 value={prompt}
                 onChange={(e) => setPrompt(e.target.value)}
                 onFocus={() => setIsFocused(true)}
                 onBlur={() => setIsFocused(false)}
                 placeholder={placeholderText}
-                className={cn(
-                  "w-full h-[120px] bg-[#1C1F2E] rounded-xl p-4",
-                  "text-gray-200 font-mono leading-relaxed",
-                  "focus:outline-none focus:ring-2 focus:ring-blue-500/50",
-                  "transition-all duration-200",
-                  "placeholder:text-gray-500"
-                )}
+                minRows={5}
+                variant="bordered"
+                classNames={{
+                  input: "font-mono leading-relaxed",
+                  inputWrapper: "bg-content2"
+                }}
               />
               {!prompt && !isFocused && (
                 <div 
                   className={cn(
                     "absolute top-[17px] inline-block",
-                    "w-[2px] h-[1.2em] bg-gray-400",
+                    "w-[2px] h-[1.2em] bg-default-400",
                     "transition-all duration-75",
                     showCursor ? "opacity-100" : "opacity-0"
                   )}
@@ -131,7 +140,7 @@ const ThumbnailGenerator: React.FC = () => {
 
           {/* Reference Image */}
           <div>
-            <label className="block text-sm text-gray-400 mb-2">
+            <label className="block text-sm text-default-500 mb-2">
               Reference Image (Optional):
             </label>
             <ImageUploader 
@@ -141,81 +150,82 @@ const ThumbnailGenerator: React.FC = () => {
           </div>
 
           {/* Quality Selection */}
-          <div className="flex items-center justify-between">
+          <div className="flex items-center justify-between flex-wrap gap-4">
             <div className="flex items-center gap-3">
-              <span className="text-sm text-gray-400">Quality:</span>
-              <div className="flex bg-[#1C1F2E] rounded-lg p-1">
+              <span className="text-sm text-default-500">Quality:</span>
+              <ButtonGroup variant="bordered" size="sm">
                 {['LOW', 'MEDIUM', 'HD'].map((q) => (
-                  <button
+                  <Button
                     key={q}
                     onClick={() => setQuality(q as typeof quality)}
-                    className={cn(
-                      "px-4 py-1.5 rounded-md text-sm font-medium transition-colors",
-                      quality === q ? "bg-blue-500 text-white" : "text-gray-400 hover:text-white"
-                    )}
+                    color={quality === q ? "primary" : "default"}
+                    variant={quality === q ? "solid" : "bordered"}
                   >
                     {q}
-                  </button>
+                  </Button>
                 ))}
-              </div>
+              </ButtonGroup>
             </div>
 
-            <button
-              onClick={handleGenerate}
-              disabled={isProcessing || (!prompt.trim() && !referenceImage)}
-              className={cn(
-                "px-6 py-2.5 rounded-lg flex items-center gap-2 font-medium transition-colors",
-                "bg-blue-500 hover:bg-blue-600 text-white",
-                "disabled:opacity-50 disabled:cursor-not-allowed"
-              )}
-            >
-              {isProcessing ? (
-                <>
-                  <Icon icon="solar:refresh-circle-bold-duotone\" className="w-5 h-5 animate-spin" />
-                  Processing...
-                </>
-              ) : (
-                <>
+            <Button
+              color="primary"
+              size="lg"
+              onPress={handleGenerate}
+              isDisabled={isProcessing || (!prompt.trim() && !referenceImage)}
+              startContent={
+                isProcessing ? (
+                  <Spinner size="sm" color="white" />
+                ) : (
                   <Icon icon="solar:magic-stick-bold-duotone" className="w-5 h-5" />
-                  Generate Thumbnail
-                </>
-              )}
-            </button>
+                )
+              }
+            >
+              {isProcessing ? 'Processing...' : 'Generate Thumbnail'}
+            </Button>
           </div>
-        </div>
-      </div>
+        </CardBody>
+      </Card>
 
       {/* Generated Thumbnails */}
       {generatedThumbnails.length > 0 && (
-        <div className="bg-[#151823] rounded-2xl p-6 border border-gray-800/50">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {generatedThumbnails.map((thumbnail) => (
-              <div
-                key={thumbnail.id}
-                className={cn(
-                  "relative aspect-video rounded-xl overflow-hidden cursor-pointer group",
-                  "border-2 transition-colors",
-                  selectedThumbnail === thumbnail.id
-                    ? "border-blue-500"
-                    : "border-transparent hover:border-gray-700"
-                )}
-                onClick={() => setSelectedThumbnail(thumbnail.id)}
-              >
-                <img
-                  src={thumbnail.url}
-                  alt={`Generated thumbnail ${thumbnail.id}`}
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                  <Icon 
-                    icon={selectedThumbnail === thumbnail.id ? "solar:check-circle-bold-duotone" : "solar:cursor-bold-duotone"}
-                    className="w-8 h-8 text-white"
-                  />
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
+        <Card className="bg-content1 border border-divider">
+          <CardHeader>
+            <h3 className="text-lg font-semibold text-foreground">Generated Results</h3>
+          </CardHeader>
+          <Divider />
+          <CardBody>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {generatedThumbnails.map((thumbnail) => (
+                <Card
+                  key={thumbnail.id}
+                  isPressable
+                  isHoverable
+                  className={cn(
+                    "relative aspect-video transition-colors",
+                    selectedThumbnail === thumbnail.id
+                      ? "ring-2 ring-primary ring-offset-2 ring-offset-background"
+                      : ""
+                  )}
+                  onPress={() => setSelectedThumbnail(thumbnail.id)}
+                >
+                  <CardBody className="p-0">
+                    <img
+                      src={thumbnail.url}
+                      alt={`Generated thumbnail ${thumbnail.id}`}
+                      className="w-full h-full object-cover rounded-lg"
+                    />
+                    <div className="absolute inset-0 bg-black/50 opacity-0 hover:opacity-100 transition-opacity flex items-center justify-center rounded-lg">
+                      <Icon 
+                        icon={selectedThumbnail === thumbnail.id ? "solar:check-circle-bold-duotone" : "solar:cursor-bold-duotone"}
+                        className="w-8 h-8 text-white"
+                      />
+                    </div>
+                  </CardBody>
+                </Card>
+              ))}
+            </div>
+          </CardBody>
+        </Card>
       )}
     </div>
   );
