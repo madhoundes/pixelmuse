@@ -12,26 +12,26 @@ const socialPlatforms = [
   {
     name: 'Twitter',
     icon: 'solar:letter-rounded-linear',
-    color: 'text-blue-400',
-    bgColor: 'bg-blue-400/10 hover:bg-blue-400/20'
+    color: 'text-primary',
+    bgColor: 'bg-primary/10 hover:bg-primary/20'
   },
   {
     name: 'Facebook',
     icon: 'solar:share-circle-rounded-linear',
-    color: 'text-blue-600',
-    bgColor: 'bg-blue-600/10 hover:bg-blue-600/20'
+    color: 'text-primary',
+    bgColor: 'bg-primary/10 hover:bg-primary/20'
   },
   {
     name: 'LinkedIn',
     icon: 'solar:link-circle-rounded-linear',
-    color: 'text-blue-500',
-    bgColor: 'bg-blue-500/10 hover:bg-blue-500/20'
+    color: 'text-primary',
+    bgColor: 'bg-primary/10 hover:bg-primary/20'
   },
   {
     name: 'WhatsApp',
     icon: 'solar:chat-round-dots-linear',
-    color: 'text-green-500',
-    bgColor: 'bg-green-500/10 hover:bg-green-500/20'
+    color: 'text-semantic-success',
+    bgColor: 'bg-semantic-success/10 hover:bg-semantic-success/20'
   }
 ];
 
@@ -73,15 +73,15 @@ const ShareModal: React.FC<ShareModalProps> = ({ isOpen, onClose }) => {
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-95"
             >
-              <Dialog.Panel className="w-full max-w-md bg-[#151823] rounded-2xl shadow-xl border border-gray-800/50">
+              <Dialog.Panel className="w-full max-w-md bg-content1 rounded-2xl shadow-xl border border-border-primary">
                 <div className="p-6">
                   <div className="flex items-center justify-between mb-6">
-                    <Dialog.Title className="text-xl font-bold">
+                    <Dialog.Title className="text-xl font-bold text-text-primary">
                       Share PixelMuse
                     </Dialog.Title>
                     <button
                       onClick={onClose}
-                      className="p-2 text-gray-400 hover:text-white rounded-lg hover:bg-gray-800 transition-colors"
+                      className="p-2 text-text-secondary hover:text-text-primary rounded-lg hover:bg-content2 transition-colors"
                     >
                       <Icon icon="solar:close-circle-rounded-linear" className="w-5 h-5" />
                     </button>
@@ -102,23 +102,23 @@ const ShareModal: React.FC<ShareModalProps> = ({ isOpen, onClose }) => {
                             icon={platform.icon} 
                             className={cn("w-5 h-5", platform.color)} 
                           />
-                          <span className="font-medium">{platform.name}</span>
+                          <span className="font-medium text-text-primary">{platform.name}</span>
                         </button>
                       ))}
                     </div>
 
                     {/* Copy Link Section */}
                     <div>
-                      <label className="block text-sm text-gray-400 mb-2">
+                      <label className="block text-sm text-text-secondary mb-2">
                         Or copy this link
                       </label>
                       <div className="flex gap-2">
-                        <div className="flex-1 bg-[#1C1F2E] rounded-xl px-4 py-2.5 text-sm text-gray-400 truncate">
+                        <div className="flex-1 bg-content2 rounded-xl px-4 py-2.5 text-sm text-text-secondary truncate">
                           {shareUrl}
                         </div>
                         <button
                           onClick={copyToClipboard}
-                          className="px-4 bg-blue-500 hover:bg-blue-600 text-white rounded-xl flex items-center gap-2 transition-colors"
+                          className="px-4 bg-primary hover:bg-primary/90 text-white rounded-xl flex items-center gap-2 transition-colors"
                         >
                           <Icon icon="solar:copy-rounded-linear" className="w-4 h-4" />
                           Copy
@@ -127,16 +127,16 @@ const ShareModal: React.FC<ShareModalProps> = ({ isOpen, onClose }) => {
                     </div>
 
                     {/* Referral Info */}
-                    <div className="bg-gradient-to-r from-purple-500/10 to-blue-500/10 rounded-xl p-4">
+                    <div className="bg-gradient-to-r from-secondary/10 to-primary/10 rounded-xl p-4">
                       <div className="flex items-start gap-3">
-                        <div className="p-2 bg-purple-500/20 rounded-lg">
-                          <Icon icon="solar:gift-rounded-linear" className="w-5 h-5 text-purple-400" />
+                        <div className="p-2 bg-secondary/20 rounded-lg">
+                          <Icon icon="solar:gift-rounded-linear" className="w-5 h-5 text-secondary" />
                         </div>
                         <div>
-                          <h3 className="text-sm font-medium text-purple-400">
+                          <h3 className="text-sm font-medium text-secondary">
                             Earn Rewards
                           </h3>
-                          <p className="text-xs text-gray-400 mt-1">
+                          <p className="text-xs text-text-secondary mt-1">
                             Get 50 bonus credits for each friend who joins using your link
                           </p>
                         </div>

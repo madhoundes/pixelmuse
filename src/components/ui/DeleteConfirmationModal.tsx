@@ -57,35 +57,35 @@ const DeleteConfirmationModal: React.FC<DeleteConfirmationModalProps> = ({
           <div className="inline-block align-middle my-8 w-full max-w-md text-left">
             <div 
               className={cn(
-                "relative bg-[#151823] rounded-xl shadow-xl transform transition-all",
-                "border border-gray-800/50"
+                "relative bg-content1 rounded-xl shadow-xl transform transition-all",
+                "border border-border-primary"
               )}
             >
               <div className="p-6">
                 <div className="flex items-center gap-4 mb-6">
-                  <div className="p-3 bg-red-500/10 rounded-xl">
+                  <div className="p-3 bg-semantic-error/10 rounded-xl">
                     <Icon 
                       icon="solar:trash-bin-trash-bold-duotone" 
-                      className="w-7 h-7 text-red-500" 
+                      className="w-7 h-7 text-semantic-error" 
                     />
                   </div>
                   <div>
                     <Dialog.Title
                       as="h3"
-                      className="text-lg font-semibold leading-6"
+                      className="text-lg font-semibold leading-6 text-text-primary"
                       id="delete-modal-title"
                     >
                       Delete Confirmation
                     </Dialog.Title>
-                    <Dialog.Description className="mt-1 text-sm text-gray-400">
+                    <Dialog.Description className="mt-1 text-sm text-text-secondary">
                       This action cannot be undone
                     </Dialog.Description>
                   </div>
                 </div>
 
-                <div className="bg-red-500/5 border border-red-500/10 rounded-lg p-4 mb-6">
-                  <p className="text-sm text-gray-300">
-                    Are you sure you want to delete <span className="text-white font-medium">{itemName}</span>?
+                <div className="bg-semantic-error/5 border border-semantic-error/10 rounded-lg p-4 mb-6">
+                  <p className="text-sm text-text-secondary">
+                    Are you sure you want to delete <span className="text-text-primary font-medium">{itemName}</span>?
                   </p>
                 </div>
 
@@ -95,7 +95,7 @@ const DeleteConfirmationModal: React.FC<DeleteConfirmationModalProps> = ({
                     onClick={onClose}
                     className={cn(
                       "flex-1 px-4 py-2.5 rounded-lg text-sm font-medium transition-colors",
-                      "bg-[#1C1F2E] hover:bg-[#242838] border border-gray-800/50"
+                      "bg-content2 hover:bg-content3 border border-border-primary text-text-primary"
                     )}
                   >
                     Cancel
@@ -104,8 +104,8 @@ const DeleteConfirmationModal: React.FC<DeleteConfirmationModalProps> = ({
                     onClick={onConfirm}
                     className={cn(
                       "flex-1 px-4 py-2.5 rounded-lg text-sm font-medium transition-colors",
-                      "bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700",
-                      "text-white shadow-lg shadow-red-500/25"
+                      "bg-gradient-to-r from-semantic-error to-semantic-error/90 hover:from-semantic-error/90 hover:to-semantic-error/80",
+                      "text-white shadow-lg shadow-semantic-error/25"
                     )}
                   >
                     Delete
