@@ -53,25 +53,25 @@ const PricingModal: React.FC<PricingModalProps> = ({ isOpen, onClose }) => {
         backdrop: "bg-black/50",
         header: "border-b border-divider",
         body: "py-6",
-        closeButton: "hover:bg-content2 text-text-secondary hover:text-text-primary"
+        closeButton: "hover:bg-default-100"
       }}
     >
       <ModalContent>
         <ModalHeader className="flex flex-col gap-1">
-          <h2 className="text-2xl font-bold text-text-primary">Upgrade Your Plan</h2>
-          <p className="text-text-secondary font-normal">
+          <h2 className="text-2xl font-bold">Upgrade Your Plan</h2>
+          <p className="text-default-500 font-normal">
             Choose the perfect plan for your thumbnail creation needs
           </p>
         </ModalHeader>
         <ModalBody>
           <div className="grid md:grid-cols-2 gap-6">
             {/* Basic Plan */}
-            <Card className="relative border border-border-primary bg-content2">
+            <Card className="relative border border-divider">
               <CardHeader className="pb-4">
                 <div className="flex items-start justify-between w-full">
                   <div>
-                    <h3 className="text-xl font-bold text-text-primary">Basic</h3>
-                    <p className="text-text-secondary text-sm mt-1">
+                    <h3 className="text-xl font-bold">Basic</h3>
+                    <p className="text-default-500 text-sm mt-1">
                       Perfect for content creators
                     </p>
                   </div>
@@ -81,12 +81,12 @@ const PricingModal: React.FC<PricingModalProps> = ({ isOpen, onClose }) => {
                   />
                 </div>
               </CardHeader>
-              <Divider className="bg-border-primary" />
+              <Divider />
               <CardBody className="pt-4">
                 <div className="mb-6">
                   <div className="flex items-end gap-2">
-                    <span className="text-3xl font-bold text-text-primary">$19</span>
-                    <span className="text-text-secondary mb-1">/month</span>
+                    <span className="text-3xl font-bold">$19</span>
+                    <span className="text-default-500 mb-1">/month</span>
                   </div>
                   <Chip 
                     size="sm" 
@@ -103,9 +103,9 @@ const PricingModal: React.FC<PricingModalProps> = ({ isOpen, onClose }) => {
                     <div key={index} className="flex items-start gap-2">
                       <Icon 
                         icon="solar:check-circle-linear" 
-                        className="w-5 h-5 text-semantic-success flex-shrink-0 mt-0.5" 
+                        className="w-5 h-5 text-success flex-shrink-0 mt-0.5" 
                       />
-                      <span className="text-sm text-text-secondary">{feature.text}</span>
+                      <span className="text-sm">{feature.text}</span>
                     </div>
                   ))}
                 </div>
@@ -136,8 +136,8 @@ const PricingModal: React.FC<PricingModalProps> = ({ isOpen, onClose }) => {
               <CardHeader className="pb-4 pt-6">
                 <div className="flex items-start justify-between w-full">
                   <div>
-                    <h3 className="text-xl font-bold text-text-primary">Pro</h3>
-                    <p className="text-text-secondary text-sm mt-1">
+                    <h3 className="text-xl font-bold">Pro</h3>
+                    <p className="text-default-500 text-sm mt-1">
                       For professional creators
                     </p>
                   </div>
@@ -147,12 +147,12 @@ const PricingModal: React.FC<PricingModalProps> = ({ isOpen, onClose }) => {
                   />
                 </div>
               </CardHeader>
-              <Divider className="bg-border-primary" />
+              <Divider />
               <CardBody className="pt-4">
                 <div className="mb-6">
                   <div className="flex items-end gap-2">
-                    <span className="text-3xl font-bold text-text-primary">$49</span>
-                    <span className="text-text-secondary mb-1">/month</span>
+                    <span className="text-3xl font-bold">$49</span>
+                    <span className="text-default-500 mb-1">/month</span>
                   </div>
                   <Chip 
                     size="sm" 
@@ -169,11 +169,11 @@ const PricingModal: React.FC<PricingModalProps> = ({ isOpen, onClose }) => {
                     <div key={index} className="flex items-start gap-2 group relative">
                       <Icon 
                         icon="solar:check-circle-linear" 
-                        className="w-5 h-5 text-semantic-success flex-shrink-0 mt-0.5" 
+                        className="w-5 h-5 text-success flex-shrink-0 mt-0.5" 
                       />
-                      <span className="text-sm text-text-secondary">{feature.text}</span>
+                      <span className="text-sm">{feature.text}</span>
                       {feature.tooltip && (
-                        <div className="absolute left-6 -top-8 w-48 bg-content3 text-xs p-2 rounded-lg shadow-lg opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-10 text-text-primary">
+                        <div className="absolute left-6 -top-8 w-48 bg-content2 text-xs p-2 rounded-lg shadow-lg opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-10">
                           {feature.tooltip}
                         </div>
                       )}
