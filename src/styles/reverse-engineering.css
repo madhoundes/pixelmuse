@@ -1,0 +1,147 @@
+/* Reverse Engineering Component Styles */
+
+/* Upload zone animations */
+.upload-zone {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.upload-zone:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.upload-zone.drag-active {
+  transform: scale(1.02);
+  box-shadow: 0 0 0 2px rgba(168, 85, 247, 0.4);
+}
+
+/* Analysis progress animations */
+.analysis-progress {
+  background: linear-gradient(90deg, 
+    rgba(168, 85, 247, 0.1) 0%, 
+    rgba(168, 85, 247, 0.3) 50%, 
+    rgba(168, 85, 247, 0.1) 100%);
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* Face swap preview animations */
+.face-swap-preview {
+  position: relative;
+  overflow: hidden;
+}
+
+.face-swap-preview::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, 
+    transparent, 
+    rgba(255, 255, 255, 0.1), 
+    transparent);
+  transition: left 0.5s;
+}
+
+.face-swap-preview:hover::before {
+  left: 100%;
+}
+
+/* Result card animations */
+.result-card {
+  animation: slideInUp 0.4s ease-out;
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Prompt text area enhancements */
+.prompt-textarea {
+  font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', monospace;
+  line-height: 1.6;
+}
+
+.prompt-textarea:focus {
+  box-shadow: 0 0 0 2px rgba(168, 85, 247, 0.2);
+}
+
+/* Processing overlay */
+.processing-overlay {
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(4px);
+}
+
+/* Error state styles */
+.error-state {
+  border-color: rgba(239, 68, 68, 0.3);
+  background: rgba(239, 68, 68, 0.05);
+}
+
+/* Success state styles */
+.success-state {
+  border-color: rgba(34, 197, 94, 0.3);
+  background: rgba(34, 197, 94, 0.05);
+}
+
+/* Tab content transitions */
+.tab-content {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .upload-zone {
+    min-height: 150px;
+  }
+  
+  .face-swap-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
+
+/* Dark mode specific adjustments */
+.dark .upload-zone {
+  border-color: rgba(75, 85, 99, 0.6);
+}
+
+.dark .upload-zone:hover {
+  border-color: rgba(168, 85, 247, 0.6);
+  background: rgba(168, 85, 247, 0.05);
+}
+
+/* Accessibility improvements */
+.upload-zone:focus-visible {
+  outline: 2px solid rgba(168, 85, 247, 0.6);
+  outline-offset: 2px;
+}
+
+/* Loading states */
+.loading-shimmer {
+  background: linear-gradient(90deg, 
+    rgba(255, 255, 255, 0.1) 25%, 
+    rgba(255, 255, 255, 0.2) 50%, 
+    rgba(255, 255, 255, 0.1) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
