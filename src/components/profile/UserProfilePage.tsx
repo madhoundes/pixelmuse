@@ -77,6 +77,26 @@ const UserProfilePage: React.FC = () => {
         </div>
       </div>
 
+      {/* Monthly Limit Banner */}
+      <div className="bg-gradient-to-r from-orange-500/10 to-yellow-500/10 border border-orange-500/20 rounded-xl p-6">
+        <div className="flex items-start gap-4">
+          <div className="p-2 bg-orange-500/20 rounded-lg flex-shrink-0">
+            <Icon icon="solar:chart-square-bold-duotone" className="w-6 h-6 text-orange-400" />
+          </div>
+          <div className="flex-1">
+            <h3 className="text-lg font-semibold text-orange-400 mb-2">
+              You've reached your monthly limit!
+            </h3>
+            <p className="text-gray-300 mb-4">
+              Upgrade to Pro to create unlimited thumbnails and access premium features.
+            </p>
+            <button className="bg-gradient-to-r from-orange-500 to-yellow-500 hover:from-orange-600 hover:to-yellow-600 text-white px-6 py-2.5 rounded-lg font-medium transition-colors">
+              Upgrade to Pro
+            </button>
+          </div>
+        </div>
+      </div>
+
       {/* Recent Activity */}
       <div>
         <h2 className="text-xl font-bold mb-4">Recent Activity</h2>
