@@ -5,6 +5,7 @@ import { cn } from '../../utils/cn';
 import GenerationHistory from './GenerationHistory';
 import ShareModal from '../ui/ShareModal';
 import DeleteConfirmationModal from '../ui/DeleteConfirmationModal';
+import PricingModal from '../pricing/PricingModal';
 import { mockUser, mockGenerations } from '../../utils/profileMockData';
 
 type ActiveTab = 'overview' | 'billing' | 'history' | 'account';
@@ -13,6 +14,7 @@ const UserProfilePage: React.FC = () => {
   const [activeTab, setActiveTab] = useState<ActiveTab>('overview');
   const [isShareModalOpen, setIsShareModalOpen] = useState(false);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+  const [isPricingModalOpen, setIsPricingModalOpen] = useState(false);
   const navigate = useNavigate();
 
   const handleDeleteAccount = () => {
@@ -90,7 +92,10 @@ const UserProfilePage: React.FC = () => {
             <p className="text-gray-300 mb-4">
               Upgrade to Pro to create unlimited thumbnails and access premium features.
             </p>
-            <button className="bg-gradient-to-r from-orange-500 to-yellow-500 hover:from-orange-600 hover:to-yellow-600 text-white px-6 py-2.5 rounded-lg font-medium transition-colors">
+            <button 
+              onClick={() => setIsPricingModalOpen(true)}
+              className="bg-gradient-to-r from-orange-500 to-yellow-500 hover:from-orange-600 hover:to-yellow-600 text-white px-6 py-2.5 rounded-lg font-medium transition-colors"
+            >
               Upgrade to Pro
             </button>
           </div>
@@ -394,6 +399,11 @@ const UserProfilePage: React.FC = () => {
         onClose={() => setIsDeleteModalOpen(false)}
         onConfirm={handleDeleteAccount}
         itemName="your account"
+      />
+
+      <PricingModal
+        isOpen={isPricingModalOpen}
+        onClose={() => setIsPricingModalOpen(false)}
       />
     </div>
   );
