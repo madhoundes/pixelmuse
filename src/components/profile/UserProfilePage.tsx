@@ -127,6 +127,39 @@ const UserProfilePage: React.FC = () => {
         </div>
       </div>
 
+      {/* Second Upgrade Banner - Below Monthly Limit */}
+      {mockUser.plan === 'free' && (
+        <div className="bg-gradient-to-r from-purple-500/10 to-pink-500/10 border border-purple-500/20 rounded-xl p-6">
+          <div className="flex items-start gap-4">
+            <div className="p-2 bg-purple-500/20 rounded-lg flex-shrink-0">
+              <Icon icon="solar:rocket-bold-duotone" className="w-6 h-6 text-purple-400" />
+            </div>
+            <div className="flex-1">
+              <h3 className="text-lg font-semibold text-purple-400 mb-2">
+                Ready to Level Up Your Content?
+              </h3>
+              <p className="text-gray-300 mb-4">
+                Join thousands of creators who've upgraded to Pro for unlimited creativity and professional results.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-3">
+                <button 
+                  onClick={() => setIsPricingModalOpen(true)}
+                  className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white px-6 py-2.5 rounded-lg font-medium transition-colors"
+                >
+                  Start Pro Trial
+                </button>
+                <button 
+                  onClick={() => setIsPricingModalOpen(true)}
+                  className="border border-purple-500/30 hover:border-purple-500/50 text-purple-400 hover:text-purple-300 px-6 py-2.5 rounded-lg font-medium transition-colors"
+                >
+                  View Pricing
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Recent Activity */}
       <div>
         <h2 className="text-xl font-bold mb-4">Recent Activity</h2>
