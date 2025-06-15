@@ -79,6 +79,31 @@ const UserProfilePage: React.FC = () => {
         </div>
       </div>
 
+      {/* Free Plan Upgrade Banner */}
+      {mockUser.plan === 'free' && (
+        <div className="bg-gradient-to-r from-blue-500/10 to-purple-500/10 border border-blue-500/20 rounded-xl p-6">
+          <div className="flex items-start gap-4">
+            <div className="p-2 bg-blue-500/20 rounded-lg flex-shrink-0">
+              <Icon icon="solar:crown-bold-duotone" className="w-6 h-6 text-blue-400" />
+            </div>
+            <div className="flex-1">
+              <h3 className="text-lg font-semibold text-blue-400 mb-2">
+                Unlock Premium Features
+              </h3>
+              <p className="text-gray-300 mb-4">
+                Get unlimited HD generations, advanced AI tools, and priority support with Pro.
+              </p>
+              <button 
+                onClick={() => setIsPricingModalOpen(true)}
+                className="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white px-6 py-2.5 rounded-lg font-medium transition-colors"
+              >
+                Upgrade to Pro
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Monthly Limit Banner */}
       <div className="bg-gradient-to-r from-orange-500/10 to-yellow-500/10 border border-orange-500/20 rounded-xl p-6">
         <div className="flex items-start gap-4">
